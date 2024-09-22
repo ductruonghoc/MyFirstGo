@@ -1,7 +1,8 @@
 package main
 
 import "fmt"
+import "main/model"
 
 func main() {
-	fmt.Println("Hello, World!!!");
+	fmt.Println(model.Hi());
 }

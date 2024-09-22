@@ -26,4 +26,5 @@ func (proc *Procedure) SetDB(db *database.Database) {
 func (proc *Procedure) Routes() {
 	db := proc.DB.DB
 	proc.Root.GET("/inventory", cors.Default() ,controller.Inventory(db));
+	proc.Root.GET("io/:id/:value", cors.Default(), controller.ImportExportSingleItem(db));
 }

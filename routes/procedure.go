@@ -4,8 +4,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"main/controller"
-	"main/database"
+	"github.com/ductruonghoc/MyFirstGo/main/controller"
+	"github.com/ductruonghoc/MyFirstGo/main/database"
 )
 
 type Procedure struct {

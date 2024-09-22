@@ -1,4 +1,4 @@
-module main
+module github.com/ductruonghoc/MyFirstGo/main
 
 go 1.23.1
 

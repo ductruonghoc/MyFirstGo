@@ -2,9 +2,8 @@ package controller
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
-	"main/model"
+	"github.com/ductruonghoc/MyFirstGo/main/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -22,7 +21,6 @@ func Inventory(db *sql.DB) gin.HandlerFunc {
 	//Handler func as lambda
 	fn := func (context *gin.Context)  {
 		rows, err := db.Query("SELECT id, procs_name, price, cap, inventory FROM Procs");
-		fmt.Println(rows);
 		if err != nil {
 			log.Fatal(err);
 		}

@@ -5,18 +5,16 @@ import (
 	"log"
 	"os"
 	"time"
-	"fmt"
 
 	_ "github.com/lib/pq"
 );
 
 type Database struct {
 	DB *sql.DB
-}
+};
 
 func (d *Database) DBConnection() {
 	connStr := os.Getenv("DBCONNECTION"); //Get credentials
-	fmt.Println(connStr);
 	// Set the maximum number of idle connections in the pool
 	idleConn := 50
 	// Set the maximum number of connections in the pool
@@ -30,8 +28,8 @@ func (d *Database) DBConnection() {
 	if db == nil {
 		log.Fatal(db);
 	}
-	db.SetMaxOpenConns(maxConnections)
-	db.SetMaxIdleConns(idleConn)
-	db.SetConnMaxLifetime(maxConnLifetime)
+	db.SetMaxOpenConns(maxConnections);
+	db.SetMaxIdleConns(idleConn);
+	db.SetConnMaxLifetime(maxConnLifetime);
 	d.DB = db; //update
 }

@@ -11,6 +11,7 @@ type Procedure struct {
 	Price int16 `json:"price"`
 	Cost int16 `json:"cost"`
 	Inventory int16 `json:"inventory"`
+	NameDict string `json:"name_dict"`
 };
 //Scan to modeling procedure
 func ProcedureModel(rows *sql.Rows) (procedures []Procedure){
@@ -26,7 +27,8 @@ func ProcedureModel(rows *sql.Rows) (procedures []Procedure){
 			&procedure.Name, 
 			&procedure.Price, 
 			&procedure.Cost, 
-			&procedure.Inventory);
+			&procedure.Inventory,
+			&procedure.NameDict);
 		//Err
 		if err != nil {
 			log.Fatal(err);

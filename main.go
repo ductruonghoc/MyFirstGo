@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/ductruonghoc/MyFirstGo/main/database"
 	"github.com/ductruonghoc/MyFirstGo/main/routes"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	
 )
 
 func main() {
@@ -13,6 +13,7 @@ func main() {
 	db.DBConnection(); //connect
 	//API
 	app := gin.Default();
+	app.Use(cors.Default());
 	procedureRoute := new(routes.Procedure);
 	routes := app.Group("/api")
 	{

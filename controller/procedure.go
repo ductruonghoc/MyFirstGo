@@ -21,7 +21,7 @@ import (
 func Inventory(db *sql.DB) gin.HandlerFunc {
 	//Handler func as lambda
 	fn := func (context *gin.Context)  {
-		rows, err := db.Query("SELECT id, procs_name, price, cap, inventory FROM Procs");
+		rows, err := db.Query("SELECT id, procs_name, price, cap, inventory, name_dict FROM Procs");
 		if err != nil {
 			log.Fatal(err);
 		}

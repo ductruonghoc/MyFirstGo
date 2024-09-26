@@ -13,7 +13,10 @@ func main() {
 	db.DBConnection(); //connect
 	//API
 	app := gin.Default();
-	app.Use(cors.Default());
+	//Cors
+	config := cors.DefaultConfig();
+	config.AllowOrigins = []string {"http://localhost:3000", "https://dht-client.vercel.app"};
+	app.Use(cors.New(config));
 	procedureRoute := new(routes.Procedure);
 	routes := app.Group("/api")
 	{

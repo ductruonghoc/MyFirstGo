@@ -6,7 +6,6 @@ import (
 
 	"github.com/ductruonghoc/MyFirstGo/main/controller"
 	"github.com/ductruonghoc/MyFirstGo/main/database"
-	"github.com/gin-contrib/cors"
 )
 
 type Procedure struct {
@@ -25,6 +24,6 @@ func (proc *Procedure) SetDB(db *database.Database) {
 
 func (proc *Procedure) Routes() {
 	db := proc.DB.DB
-	proc.Root.GET("/inventory", cors.Default() ,controller.Inventory(db));
-	proc.Root.GET("io/:id/:value", cors.Default(), controller.ImportExportSingleItem(db));
+	proc.Root.GET("/inventory", controller.Inventory(db));
+	proc.Root.GET("io/:id/:value", controller.ImportExportSingleItem(db));
 }

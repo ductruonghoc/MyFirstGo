@@ -25,5 +25,6 @@ func (proc *Procedure) SetDB(db *database.Database) {
 func (proc *Procedure) Routes() {
 	db := proc.DB.DB
 	proc.Root.GET("/inventory", controller.Inventory(db));
-	proc.Root.GET("io/:id/:value", controller.ImportExportSingleItem(db));
+	proc.Root.GET("io/:id/:value", controller.ImportExportSingleItem(db)); //single io
+	proc.Root.POST("io", controller.ImportExportItems(db)); //multiple ip
 }

@@ -17,7 +17,7 @@ type Procedure struct {
 	RootIs uint16 `json:"root_is"`
 };
 //Scan to modeling procedure
-func ProcedureModel(rows *sql.Rows) (procedures []Procedure){
+func ProcedureModel(rows *sql.Rows) (procedures []Procedure, err error){
 	//run when loop done, free resources
 	defer rows.Close();
 	//Each rows
@@ -25,7 +25,7 @@ func ProcedureModel(rows *sql.Rows) (procedures []Procedure){
 		//Clone struct
 		procedure := new(Procedure);
 		//Structure rows by clone
-		err := rows.Scan(
+		err = rows.Scan(
 			&procedure.ID, 
 			&procedure.Name, 
 			&procedure.Price, 
@@ -37,7 +37,8 @@ func ProcedureModel(rows *sql.Rows) (procedures []Procedure){
 			&procedure.RootIs);
 		//Err
 		if err != nil {
-			log.Fatal(err);
+			log.Println(err);
+			return;
 		}
 		//Put clone to struct
 		procedures = append(procedures, *procedure);

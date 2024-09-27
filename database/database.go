@@ -22,11 +22,11 @@ func (d *Database) DBConnection() {
 	// Set the maximum amount of time a connection can be reused
 	maxConnLifetime := 2 * time.Minute
 	db, err := sql.Open("postgres", connStr); //init
-	if err != nil {
+	if err != nil { 
 		log.Fatal(err);
 	}
-	if db == nil {
-		log.Fatal(db);
+	if db == nil { //nil db
+		log.Fatal("Dont have db");
 	}
 	db.SetMaxOpenConns(maxConnections);
 	db.SetMaxIdleConns(idleConn);

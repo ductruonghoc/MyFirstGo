@@ -65,7 +65,7 @@ func ImportExportSingleItem(db *sql.DB) gin.HandlerFunc {
 
 type ioItem struct {
 	ID       uint32 `json:"id"`
-	Quantity int16  `json:"quantity`
+	Quantity int16  `json:"quantity"`
 }
 
 func ImportExportItems(db *sql.DB) gin.HandlerFunc {
@@ -85,10 +85,10 @@ func ImportExportItems(db *sql.DB) gin.HandlerFunc {
 			return;
 		}
 		for _, element := range arr {
-			log.Println(element);
 			id := element.ID;
 			quantity := element.Quantity;
-			_, err = db.Query("UPDATE Procs_version SET inventory=inventory+$1 WHERE id=$2", quantity, id);
+			
+			_, err = db.Query("UPDATE Procs_version SET inventory=case when inventory+$1<0 then 0 else inventory+$1 end WHERE id=$2", quantity, id);
 			if err != nil {
 				context.Status(http.StatusInternalServerError);
 				return;

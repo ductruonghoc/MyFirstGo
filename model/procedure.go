@@ -10,7 +10,7 @@ type Procedure struct {
 	Name string `json:"name"`
 	Price uint32 `json:"price"`
 	Cost uint32 `json:"cost"`
-	Inventory uint16 `json:"inventory"`
+	Inventory float32 `json:"inventory"`
 	NameDict string `json:"name_dict"`
 	Unit string `json:"unit"`
 	RootID uint32 `json:"root_id"`
@@ -43,6 +43,5 @@ func ProcedureModel(rows *sql.Rows) (procedures []Procedure, err error){
 		//Put clone to struct
 		procedures = append(procedures, *procedure);
 	}
-
 	return;
 }
